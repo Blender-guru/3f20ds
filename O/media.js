@@ -1,28 +1,28 @@
-let values = [];
+let sells = new Array();
 
 function Add(val)
 {
-    values.push(val);
+    sells.push(val);
 }
 
 function Message()
 {
     const init = parseInt(prompt("¿cuantas ventas registrarás?"));
     Cycle(init);
-    const value = prompt("¿Quieres registrar más ventas? yes|no");
 
-    /*switch(value)
+    do
     {
-        case "yes":
+        const value = prompt("¿Quieres registrar más ventas? yes|no");
+
+        if(value == "yes")
+        {
+            const linit = parseInt(prompt("¿Cuantas más?"));
+            Cycle(linit);
+        }
+        else
             break;
-        case "no":
-            break;
-        default:
-            alert("YES OR NO");
-            
-            break;
-    }
-    */
+    }while(true);
+    
     Calculate(init);
 }
 
@@ -30,7 +30,7 @@ function Cycle(loop)
 {
     for(let i = 0; i < loop; i++)
     {
-        Add(parseInt(prompt((i + 1) + "a venta:")));
+        Add(parseInt(prompt((sells.length + 1) + "a venta:")));
     }
 }
 
@@ -48,7 +48,7 @@ function Max(length)
     let la = 0;
     for(let i = 0; i < length; i++)
     {
-        if(values[i] > la) la = values[i];
+        if(sells[i] > la) la = sells[i];
     }
     return la;
 }
@@ -58,7 +58,7 @@ function Min(length, max)
     let lc = max;
     for(let i = 0; i < length; i++)
     {
-        if(values[i] > lc) lc = values[i];
+        if(sells[i] > lc) lc = sells[i];
     }
     return lc;
 }
@@ -69,9 +69,9 @@ function Media(length)
 
     for(let i = 0; i < length; i++)
     {
-        a += values[i];
+        a += sells[i];
     }
-    return a / values.length;
+    return a / sells.length;
 }
 
 Message();
